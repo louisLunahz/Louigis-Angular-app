@@ -1,0 +1,9 @@
+<div *ngFor="let item of items" class="row">
+     
+    <div class="col">
+      <app-item 
+      [item]="item"
+      (onDelete)="deleteProduct($event)"
+      ></app-item>
+    </div>
+  </div>

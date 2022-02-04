@@ -1,0 +1,12 @@
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 ">
+        <div class="col-md-4 col-lg-3" *ngFor="let product of products">   
+         <app-product 
+         [product]="product"
+         [parent]="'products'"
+         (onAddToFav)="addToFavourites($event)"
+         (onAddProductToCart)="AddProductToCart($event)"
+         ></app-product>
+        </div>
+    </div>
+</div>

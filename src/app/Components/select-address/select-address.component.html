@@ -1,0 +1,18 @@
+<div class="container-fluid">
+  <div class="row ">
+    <app-address *ngIf="this.address; else elseBlock" [address]="address">
+
+    </app-address>
+    <ng-template #elseBlock>
+      <div class="card d-flex flex-column justify-content-center" >
+        <div>
+          <h2 class="text-center">You haven´t set your Address yet</h2>
+        </div>
+      
+      </div>
+    </ng-template>  
+
+  </div>
+
+
+</div>

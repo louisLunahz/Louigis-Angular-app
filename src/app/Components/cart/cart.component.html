@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row " *ngIf="items.length>0; else elseBlock">
+    <app-items [items]="items" (onDelete)="deleteProduct($event)" class="col col-lg-8">
+
+    </app-items>
+      <app-total-card 
+      *ngIf="  this.items.length>=1;"
+      [total]="total"
+      class="col-lg-4"> 
+      </app-total-card >
+  </div>
+  <ng-template #elseBlock>
+    <div class="card d-flex flex-column justify-content-center" >
+      <div>
+        <h2 class="text-center">Your cart is empty</h2>
+      </div>
+    
+    </div>
+  </ng-template>
+
+</div>

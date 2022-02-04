@@ -1,0 +1,9 @@
+.row{
+    padding: 39px;
+}
+.card{
+    padding-top: 3vh;
+    height: 50vh;
+    width: 100vw;
+    border: none;
+}

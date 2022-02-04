@@ -1,0 +1,28 @@
+.row{
+    padding: 50px;
+    
+}
+
+
+.AddressCard{
+    border-radius: 5px;
+
+
+}
+.title{
+    background-color: #35858B;
+    width: 100%;
+    height: 10vh;
+    border-radius: 5px;
+    
+  
+}
+.btn{
+    display: block;
+    background-color: #35858B;
+}
+
+.address-row{
+    padding:0  50px;
+    background-color: #4FBDBA;
+}

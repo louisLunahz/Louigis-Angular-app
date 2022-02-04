@@ -1,0 +1,19 @@
+
+
+    <div class="image  ">
+        <a [routerLink]="['/productDetails', product.id]">
+            <img src="{{product.src_image}}" class="w-100" height="400px" width="400px">
+            <div class="overlay">
+                <div class="detail">See details</div>
+            </div>
+        </a>
+    </div>
+    <div class="product-info">
+        <h5 class="text-center">{{product.name}}</h5>
+        <h5 class="text-center">{{product.price}}</h5>
+        <a  class="btn buy" (click)="addProductToCart(product.id)">Add to cart</a>
+    </div>
+  
+
+
+
