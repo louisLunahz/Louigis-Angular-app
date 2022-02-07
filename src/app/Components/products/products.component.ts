@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/Product.service';
 import { Product } from '../../models/product';
 import {Router, ActivatedRoute, Params} from '@angular/router';
+import { FavouritesService } from 'src/app/services/favourites.service';
 
 @Component({
   selector: 'app-products',
@@ -12,11 +13,12 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
   public products: Product[];
-  public toSearch: string="";
+  public toSearch: string;
 
 
   constructor(
     private _productService: ProductService,
+    private _favouritesService: FavouritesService,
     private _cartService: CartService, 
     private _route: ActivatedRoute,
     private _router: Router,
@@ -28,25 +30,40 @@ export class ProductsComponent implements OnInit {
     this._route.params.subscribe({
       next: (params: Params)=>{
         if(params['wordToSearch']){
-          this.toSearch=params['wordToSearch'];
-        }
-        this._productService.getProducts().subscribe(
-
-          {
+          this.toSearch=params['wordToSearch'].toString();
+          console.log("to search: ");
+          console.log(this.toSearch);
+          this._productService.getProductThatMatches(this.toSearch).subscribe(
+            {
+              next: (data) => {
+                this.products=data;
+              },
+              error: (error) => {
+                console.log(error);
+              },
+              complete: () => {
+              }
+            }
+          );
+        }else{
+          this._productService.getProducts().subscribe({
             next: (data) => {
               this.products=data;
-            this.products= this.filterProducts(this.toSearch, this.products);
             },
             error: (error) => {
               console.log(error);
             },
             complete: () => {
-              console.log("everything was completed");
             }
-          }
-        );
+          });
+        }
+       
+      }, 
+      error: (error)=>{
+        console.log(error);
       }
-    });
+    }, 
+    );
 
   
 
@@ -54,7 +71,7 @@ export class ProductsComponent implements OnInit {
   }
 
   addToFavourites(id: number) {
-    this._productService.addProductToFavourites(id).subscribe({
+    this._favouritesService.addProductToFavourites(id).subscribe({
       next: (data) => {
         console.log(data);
       },

@@ -1,9 +1,9 @@
-import { HttpParams } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { FavouritesService } from 'src/app/services/favourites.service';
 import { ProductService } from 'src/app/services/Product.service';
 @Component({
   selector: 'app-product-details',
@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   public blnProductWasAddedToCart: boolean=false;
   constructor(
     private _cartService: CartService,
+    private _favouritesService: FavouritesService,
     private _productService: ProductService,
     private _route: ActivatedRoute,
     private _router: Router,
@@ -92,7 +93,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   AddItemToFavourites(id: number){
-    this._productService.addProductToFavourites(id).subscribe({
+    this._favouritesService.addProductToFavourites(id).subscribe({
       next: (data) => {
         console.log(data);
       },

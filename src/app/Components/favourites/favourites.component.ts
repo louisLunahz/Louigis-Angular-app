@@ -1,7 +1,7 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
-import { ProductService } from 'src/app/services/Product.service';
+import { FavouritesService } from 'src/app/services/favourites.service';
 
 @Component({
   selector: 'app-favourites',
@@ -11,12 +11,12 @@ import { ProductService } from 'src/app/services/Product.service';
 export class FavouritesComponent implements OnInit {
   public products: Product[];
   constructor(
-    private _productService: ProductService, 
-    private _cartService: CartService
+    private _cartService: CartService, 
+    private _favouritesService: FavouritesService
     ) { }
 
   ngOnInit(): void {
-    this._productService.getFavourites().subscribe(
+    this._favouritesService.getFavourites().subscribe(
 
       {
         next: (data) => {
@@ -35,7 +35,7 @@ export class FavouritesComponent implements OnInit {
   }
 
   deleteProduct(id: number){
-    this._productService.delProductFromFav(id).subscribe({
+    this._favouritesService.delProductFromFav(id).subscribe({
       next: (data) => {
         console.log(data);
       },

@@ -26,16 +26,12 @@ export class ProductService{
         return this._http.get(this.url+'/product/'+id,  {headers:{skip:"true"}});
     }
 
-    addProductToFavourites(id: number){
-        return this._http.post(this.url+'/person/addFavourite', id);
+    getProductThatMatches(pattern: string):Observable<any>{
+        return this._http.get(this.url+'/product',{params: {pattern: pattern}});
     }
+    
 
-    getFavourites(): Observable<any>{
-        return this._http.get(this.url+'/person/getFavourites');
-    }
-    delProductFromFav(id: number): Observable<any>{
-        return this._http.delete(this.url+'/person/deleteProductFromFavourites', {params: {id_product: id}});
-    }
+   
 
     
 

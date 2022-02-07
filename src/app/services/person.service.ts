@@ -35,6 +35,6 @@ export class PersonService {
     return this._http.get(this.url + '/person/getInfo');
   }
   getAddress(): Observable<any>{
-   return this._http.get<any>(this.url+'/person/getAddressCurrentUser');
+   return this._http.get<any>(this.url+'/address/getAddressCurrentUser');
   }
 }

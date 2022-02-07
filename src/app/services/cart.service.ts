@@ -44,7 +44,7 @@ export class CartService {
       Year: card.Year, 
       Cv: card.Cv,
     }
-    return this._http.post(this.url+'/person/makePayment', body); 
+    return this._http.post(this.url+'/payment/makePayment', body); 
     
   }
 
