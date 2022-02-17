@@ -1,16 +1,24 @@
 <div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 ">
-        <div class="col-md-4 col-lg-3" *ngFor="let product of products">   
-         <app-product 
-         [product]="product"
-         [parent]="'favourites'"
-         (onDelete)="deleteProduct($event)"
-         (onAddProductToCart)="AddProductToCart($event)"
-         ></app-product>
+    <div class="row ">
+      <div class=" card-product col-sm-4 col-md-3 col-lg-2  d-flex flex-column  justify-content-between my-5 shadow py-2"
+        *ngFor="let product of products">
+        <div class="flex-item-1 d-flex justify-content-center align-items-center">
+          <img src="{{product.src_image}}" class="w-100 actual-image ">
         </div>
+        <div class="flex-item-2 d-flex flex-column justify-content-between align-items-center">
+          <div product-name>
+            <h5 class="text-center">{{product.name}}</h5>
+          </div>
+          <div product-price-info>
+            <h5 class="text-center price">{{product.price | currency}}</h5>
+            <a class="btn buy" (click)="addProductToCart(product.id)">Add to cart</a>
+          </div>
+        </div>
+        <a [routerLink]="['/productDetails', product.id]">
+          <div class="overlay">
+            <div class="detail">Details</div>
+          </div>
+        </a>
+      </div>
     </div>
-</div>
-
-
-
- 
+  </div>

@@ -27,7 +27,7 @@ export class CartService {
   }
 
   getAllProductsInCart():Observable<any>{
-    return this._http.get(this.url+'/cart/GetAllItemsInCart');
+    return this._http.get(this.url+'/cart/GetAllItemsInCart', {withCredentials:true});
   }
 
   deleteItemFromCart(id: number): Observable<any>{
@@ -44,7 +44,7 @@ export class CartService {
       Year: card.Year, 
       Cv: card.Cv,
     }
-    return this._http.post(this.url+'/payment/makePayment', body); 
+    return this._http.post(this.url+'/payment/makePayment', body, {withCredentials:true}); 
     
   }
 

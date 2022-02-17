@@ -1,3 +1,86 @@
-.container{
-    padding-top: 50px;
+.card-product{
+    position: relative;
+    z-index: 1;
+    padding: 0 10px;
+    border-radius: 5px;
 }
+.flex-item-1{
+    height: 50%;
+    max-height: 50%;
+    min-height: 50%;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    
+    
+
+}
+.flex-item-2{
+    height: 50%;
+    max-height: 50%;
+    min-height: 50%;
+    aspect-ratio: 1 / 1;
+    padding-bottom: 10px;
+}
+.actual-image{
+    max-width:100%;
+max-height:100%;
+object-fit: contain;
+}
+.product-price-info{
+max-height: 50%;
+}
+.product-name{
+max-height: 50%;
+}
+.block{
+    display: block;
+}
+.overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(67, 68, 68, 0.7);
+}
+
+.detail{
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.buy{
+    position: relative;
+    background-color: #278E5E;
+    color: whitesmoke;
+    border-radius: 0;
+    border: 1px solid #434444;
+    width: 100%;
+    margin-top: 20px;
+    z-index: 3;
+    padding-bottom: 3%;
+}
+.buy:hover{
+    background-color: #2196f3;
+    color: #fff;
+}
+.card-product:hover .overlay{
+    opacity: 1;
+}
+h5{
+    font-size: .7rem;
+}
+.price{
+    font-size: larger;
+}
+
+

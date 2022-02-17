@@ -1,33 +1,25 @@
-<div class="row item-card justify-content-center align-items-center d-flex">
-  <div class="col-sm-2 img-div" *ngIf="product && item">
-    <img src="{{product.src_image}}" alt="" height="100px" width="100px">
-  </div>
-  <div class="col-sm-8" *ngIf="item && product">
-    <div class="d-flex flex-column ">
-      <div class=" itemForm d-flex justify-content-center align-items-center">
-        <h3 class="align-middle">{{product.name}}</h3>
-      </div>
-      <div class=" itemForm">
-        <span class="align-middle">{{product.model}}</span>
-        <br>
-        <span class="align-middle">{{product.extra_info}}</span>
-      </div>
-      <div class="d-flex justify-content-between itemForm text-center">
-        <h4>Quantity: {{item.quantity}}</h4>
-        <button type="button" class="btn " (click)="deleteItemFromCart(item.id)">Delete from cart</button>
-      </div>
-      
-    </div>
-   
-  </div>
-  <div class="col-sm-2">
-    <div class="itemForm">
-      <h4> Total: {{product.price*item.quantity}}</h4>
-     
-    </div>
-  </div>
-  
+<div class=" d-flex justify-content-center align-items-center">
+  <img src="{{product.src_image}}" class="w-100 actual-image ">
 </div>
-
-
-
+<div class="col-sm-8 px-2 d-flex flex-column" *ngIf="true">
+  <div class="  d-flex justify-content-center align-items-center mx-2 my-2 ">
+    <h3>{{product.name}}</h3>
+  </div>
+  <div class=" mx-2 my-2">
+    <div class="my-2">
+      <span class="align-middle">{{product.model}}</span>
+    </div>
+    <div class="my-2">
+      <span class="align-middle">{{product.extra_info}}</span>
+    </div>
+  </div>
+  <div class="d-flex justify-content-between  text-center mx-2 my-2">
+    <h4>Quantity: {{item.quantity}}</h4>
+    <button type="button" class="btn" (click)="deleteItemFromCart(item.id)">Delete from cart</button>
+  </div>
+</div>
+<div class="col-sm-2 d-flex align-items-center justify-content-center">
+  <div class="">
+    <h5> Total: {{item.individual_total}}</h5>
+  </div>
+</div>

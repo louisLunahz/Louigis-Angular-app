@@ -14,11 +14,13 @@ export class AuthenticationService {
   public url: string; 
   public currentPersonSubject: BehaviorSubject<Person| null>;
   public currentPerson: Observable<Person | null>;
+  
 
-
-  constructor(
-    private http: HttpClient
-  ) {
+  constructor
+  (
+    private http: HttpClient, 
+  ) 
+  {
 
     this.url = Global.url;
     const personValue:string | null=localStorage.getItem('person');
@@ -38,33 +40,32 @@ export class AuthenticationService {
       password: credentials.password,
     }
 
-    // return this.http.post<Persno>(this.url+'/person/authenticate',body, {headers:{skip:"true"}});
-    return this.http.post<RequestResponse>(
-      this.url+'/person/authenticate',body, {headers:{skip:"true"}}
+    return this.http.post<any>(
+      this.url+'/person/authenticate',body, {
+        headers:{skip:"true"},
+        withCredentials:true,
+      }, 
     ).pipe(
       tap((receivedData: RequestResponse) => console.log(receivedData)),
       map((receivedData: RequestResponse) => {
-       
         const person= new Person(
           receivedData.person.Id,
           receivedData.person.FirstName,
           receivedData.person.LastName,
           receivedData.person.PhoneNumber,
           receivedData.person.Email,
-         receivedData.person.DateOfBirth,
-         receivedData.person.Role,
-         receivedData.token,
+          receivedData.person.DateOfBirth,
+          receivedData.person.Role,
+          receivedData.token,
         )
         this.currentPersonSubject.next(person);
         return person;
-       
-        
-      })
-    );
+      }
     
+    ),
+    )
+
   }
-
-
   
   logout() {
     // remove user from local storage to log user out

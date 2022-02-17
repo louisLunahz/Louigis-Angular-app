@@ -1,9 +1,13 @@
-<div *ngFor="let item of items" class="row">
-     
-    <div class="col">
-      <app-item 
-      [item]="item"
-      (onDelete)="deleteProduct($event)"
-      ></app-item>
-    </div>
+<div class="container">
+
+  <div class="row ">
+   
+     <app-item class="col-sm-12 d-flex  justify-content-between align-items-center shadow my-2" 
+     *ngFor="let item of items" 
+     [item]="item"
+     (onDelete)="deleteItemFromCart($event)"
+     >
+     </app-item>
+   
   </div>
+</div>

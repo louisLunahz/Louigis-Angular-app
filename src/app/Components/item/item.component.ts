@@ -24,6 +24,7 @@ export class ItemComponent implements OnInit {
   ngOnInit(): void {
 
     if(this.item){
+      console.log("item is being recieved");
       this.productService.getProductById(this.item.id_product).subscribe({
         next: (data)=>{
          this.product=data;
@@ -38,6 +39,8 @@ export class ItemComponent implements OnInit {
         console.log("complete functino");
       }
     });
+    }else{
+      console.log("item not comming");
     }
    
   }

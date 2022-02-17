@@ -84,7 +84,7 @@ export class ProductsComponent implements OnInit {
     });
   }
 
-  AddProductToCart(id: number) {
+  addProductToCart(id: number) {
     this._cartService.addProdutToCart(id, 1).subscribe({
       next: (data) => {
         console.log(data);
@@ -108,5 +108,8 @@ export class ProductsComponent implements OnInit {
     }
     return productsFiltered;
   }
+
+ 
+
 
 }

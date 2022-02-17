@@ -21,7 +21,9 @@ export class LogInFormComponent implements OnInit {
   });
   constructor(
     private authenticationService: AuthenticationService,
-    private router:Router) {
+    private router:Router, 
+   
+    ) {
     this.errorMessage = "";
     this.errorOcurred = false;
   }
@@ -31,7 +33,7 @@ export class LogInFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    
   }
   
   resetErrorFlag() {
@@ -46,7 +48,7 @@ logIn():void{
         this.person=resp;
         localStorage.setItem("person", JSON.stringify(resp));
       },
-      error: (error)=>{
+      error: ()=>{
         this.errorOcurred=true;
         this.errorMessage="Incorrect email or password";
       }, 
@@ -62,3 +64,6 @@ logIn():void{
 
 
 }
+
+
+

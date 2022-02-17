@@ -1,3 +1,9 @@
 .btn{
-    background-color: #35858B;
+    background-color: #278e5e;
+    color: whitesmoke;
 }
+input:focus { 
+    outline: none !important;
+    border-color: #278e5e;
+    box-shadow: 0 0 10px #278e5e;
+ }

@@ -1,6 +1,5 @@
 <div class="container">
-   
-    <div class="col-lg-8 border p-3 main-section bg-white">
+    <div class="col-lg-8  p-3 main-section bg-white">
         <div class="alert alert-success alert-dismissible fade show" [hidden]="!blnProductWasAddedToCart" role="alert">
             Product was added to the cart
             <button type="button" class="btn-close"  (click)="closeAlert()"></button>
@@ -8,12 +7,12 @@
         <form [formGroup]="itemForm">
             <div class="row ">
                
-                <div class="col-lg-4 left-side-product-box pb-3">
+                <div class="col-lg-4 left-side-product-box pb-3 d-flex justify-content-between align-items-center">
                     <img src="{{product.src_image}}" class="">
 
                 </div>
                 <div class="col-lg-8">
-                    <div class="right-side-pro-detail border p-3 m-0">
+                    <div class="right-side-pro-detail  p-3 m-0">
                        
                         <div class="row">
                             <div class="col-lg-12">

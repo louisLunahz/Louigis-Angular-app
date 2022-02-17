@@ -1,16 +1,16 @@
-<div class="container-fluid">
-  <div class="row " *ngIf="items.length>0; else elseBlock">
+<div class="container">
+  <div class="row " *ngIf="items && items.length>0; else elseBlock">
     <app-items [items]="items" (onDelete)="deleteProduct($event)" class="col col-lg-8">
 
     </app-items>
       <app-total-card 
-      *ngIf="  this.items.length>=1;"
+      *ngIf=" this.items!=null && this.items.length>=1;"
       [total]="total"
       class="col-lg-4"> 
       </app-total-card >
   </div>
   <ng-template #elseBlock>
-    <div class="card d-flex flex-column justify-content-center" >
+    <div class=" d-flex  justify-content-center align-items-center py-5" >
       <div>
         <h2 class="text-center">Your cart is empty</h2>
       </div>

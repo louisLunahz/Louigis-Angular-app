@@ -37,7 +37,7 @@
               </div>
           </div>
       </div>
-      <div class="carousel-item">
+      <div class="carousel-item" *ngIf="product != null">
           <div class="container">
               <div class="row p-5">
                   <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
@@ -45,7 +45,10 @@
                   </div>
                   <div class="col-lg-6 mb-0 d-flex align-items-center">
                       <div class="text-align-left">
-                          <h1 class="h1">New {{product.name}}</h1>
+                          <h1 class="h1">New 
+                              <a class="text-decoration-none link-to-item" [routerLink]="['/productDetails/'+product.id]" >{{product.name}}</a>
+
+                          </h1>
                           <h4 class="h4">{{product.extra_info}}</h4>
                       </div>
                   </div>
@@ -57,5 +60,6 @@
   
 </div>
 <!-- End Banner Hero -->
+<app-categories></app-categories>
 
 <app-products></app-products>

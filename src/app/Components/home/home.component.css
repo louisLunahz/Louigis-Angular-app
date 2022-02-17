@@ -3,5 +3,8 @@
     filter: invert(100%);
 }
 .carousel-indicators li{
-    background-color: #35858B;
+    background-color: #278e5e;
+}
+.link-to-item{
+    color: #278e5e;
 }

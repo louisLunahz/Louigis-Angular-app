@@ -14,9 +14,10 @@ export class ItemsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteProduct(id: number){
+  deleteItemFromCart(id: number){
     this.onDelete.emit(id);
 
   }
+
 
 }

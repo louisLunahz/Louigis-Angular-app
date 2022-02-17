@@ -1,6 +1,7 @@
 export interface RequestResponse {
     token:  string;
     person: Person;
+    CSRFToken: string;
 }
 
 export interface Person {
