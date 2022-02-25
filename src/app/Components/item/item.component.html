@@ -1,25 +1,27 @@
-<div class=" d-flex justify-content-center align-items-center">
-  <img src="{{product.src_image}}" class="w-100 actual-image ">
-</div>
-<div class="col-sm-8 px-2 d-flex flex-column" *ngIf="true">
-  <div class="  d-flex justify-content-center align-items-center mx-2 my-2 ">
-    <h3>{{product.name}}</h3>
+<div *ngIf="product" class="col-sm-12 d-flex  justify-content-between align-items-center shadow my-2">
+  <div class=" d-flex justify-content-center align-items-center" >
+    <img src="{{product.src_image}}" class="w-100 actual-image ">
   </div>
-  <div class=" mx-2 my-2">
-    <div class="my-2">
-      <span class="align-middle">{{product.model}}</span>
+  <div class="col-sm-8 px-2 d-flex flex-column" *ngIf="true" >
+    <div class="  d-flex justify-content-center align-items-center mx-2 my-2 ">
+      <h3>{{product.name}}</h3>
     </div>
-    <div class="my-2">
-      <span class="align-middle">{{product.extra_info}}</span>
+    <div class=" mx-2 my-2">
+      <div class="my-2">
+        <span class="align-middle">{{product.model}}</span>
+      </div>
+      <div class="my-2">
+        <span class="align-middle">{{product.extra_info}}</span>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between  text-center mx-2 my-2">
+      <h4>Quantity: {{item.quantity}}</h4>
+      <button type="button" class="btn" (click)="deleteItemFromCart(item.id)">Delete from cart</button>
     </div>
   </div>
-  <div class="d-flex justify-content-between  text-center mx-2 my-2">
-    <h4>Quantity: {{item.quantity}}</h4>
-    <button type="button" class="btn" (click)="deleteItemFromCart(item.id)">Delete from cart</button>
-  </div>
-</div>
-<div class="col-sm-2 d-flex align-items-center justify-content-center">
-  <div class="">
-    <h5> Total: {{item.individual_total}}</h5>
+  <div class="col-sm-2 d-flex align-items-center justify-content-center">
+    <div class="">
+      <h5> Total: {{item.individual_total}}</h5>
+    </div>
   </div>
 </div>

@@ -13,8 +13,8 @@ body {
     max-width: 600px;
     padding: 4vh 0;
     box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-top: 3px solid rgb(252, 103, 49);
-    border-bottom: 3px solid rgb(252, 103, 49);
+    border-top: 3px solid  #278E5E;
+    border-bottom: 3px solid #278E5E;
     border-left: none;
     border-right: none
 }
@@ -26,7 +26,7 @@ body {
 }
 
 .title {
-    color: rgb(252, 103, 49);
+    color: #278E5E;
     font-weight: 600;
     margin-bottom: 2vh;
     padding: 0 8%;
@@ -63,7 +63,7 @@ body {
 
 .total {
     padding: 2vh 8%;
-    color: rgb(252, 103, 49);
+    color: #278E5E;
     font-weight: bold
 }
 
@@ -112,12 +112,12 @@ body {
     float: left;
     position: relative;
     font-weight: 400;
-    color: rgb(160, 159, 159)
+    color: #278E5E;
 }
 
 #progressbar #step1:before {
     content: "";
-    color: rgb(252, 103, 49);
+    color: #278E5E;
     width: 5px;
     height: 5px;
     margin-left: 0px !important
@@ -198,5 +198,5 @@ body {
 
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: rgb(252, 103, 49)
+    background:#278E5E;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Receipt } from 'src/app/models/receipt';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./enter-card-information.component.css']
 })
 export class EnterCardInformationComponent implements OnInit {
-  
+  private receipt: Receipt; 
   cardForm = new FormGroup({
     Number: new FormControl('', Validators.required),
     OwnerName: new FormControl('', Validators.required),
@@ -30,14 +31,20 @@ export class EnterCardInformationComponent implements OnInit {
     if(!this.cardForm.valid){
      console.log("model is not valid");
     }else{
+     
       this._cartService.makePayment(this.cardForm.value).subscribe({
-        next: (data)=>{
-          console.log(data);
+        next: (data: Receipt)=>{
+         this.receipt=data;
+         console.log(this.receipt);
+         localStorage.setItem("receipt",JSON.stringify(this.receipt));
+       
         }, error: (error)=>{
+          console.log("Error in function makePayment, componenet: EnterCard");
           console.log(error);
         }, complete: ()=>{
           console.log("payment was done succesfully");
-          this._router.navigate(['/reciept']);
+          localStorage.removeItem("id_address");
+          this._router.navigate(["reciept"]);
         }
       });
     }

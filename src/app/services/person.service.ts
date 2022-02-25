@@ -25,16 +25,11 @@ export class PersonService {
       DateOfBirth:person.dateOfBirth,
       Role:1,
     }
-    console.log("body:");
-    console.log(body);
     return this._http.post(this.url + '/person/register', body,{headers:{skip:"true"}});
 
   }
 
   getPersonData(data: any){
     return this._http.get(this.url + '/person/getInfo');
-  }
-  getAddress(): Observable<any>{
-   return this._http.get<any>(this.url+'/address/getAddressCurrentUser');
   }
 }

@@ -1,36 +1,40 @@
 <div class="container my-3">
   <div class="row">
     <div class="col-md-6">
-      <img src="https://picsum.photos/1000/1000" alt="Image" class="img-fluid">
+      <div class="mb-4 ">
+        <h3 class="text-center">Log In</h3>
+      </div>
+      <div>
+        <img class="img-registration" src="https://bootstrapious.com/i/snippets/sn-registeration/illustration.svg"
+          alt="">
+      </div>
     </div>
-    <div class="col-md-6 contents">
-      <div class="row justify-content-center">
+    <div class="col-md-6 contents ">
+      <div class="row justify-content-center ">
         <div class="col-md-8 justify-content-center">
-          <div class="mb-4 ">
-            <h3>Log In</h3>
-          </div>
+
           <div class="alert alert-danger alert-dismissible fade show" [hidden]="!errorOcurred">
             <strong>Error! </strong>{{errorMessage}}
-            <button type="button" class="btn-close"  (click)="resetErrorFlag()"></button>
-        </div>
-          <form  [formGroup]="loginForm" >
+            <button type="button" class="btn-close" (click)="resetErrorFlag()"></button>
+          </div>
+          <form [formGroup]="loginForm">
             <div class="form-group first mb-4">
-             email: <input [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid" 
-             type="email" 
-             class="form-control" 
-             formControlName="email" >
+              email: <input [class.is-invalid]="loginForm.get('email')?.touched && loginForm.get('email')?.invalid"
+                type="email" class="form-control" formControlName="email">
             </div>
             <div class="form-group last mb-4">
-             password:  <input type="password" class="form-control" id="password" formControlName="password">
+              password: <input type="password" class="form-control" id="password" formControlName="password">
             </div>
-            <div class="d-flex mb-5 align-items-center justify-content-right">
-              <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                <input type="checkbox" checked="">
-                <div class="control__indicator"></div>
-              </label>
-              <a [routerLink]="['/register']">Don´t have an account?</a>
+            <div class="row">
+              <div class="col-md-6">
+                <a [routerLink]="['/register']">Don´t have an account?</a>
+              </div>
+              <div class="col-md-6 d-flex justify-content-end">
+                <input [disabled]="!loginForm.valid" type="submit" value="Log In" class="btn btn-block  "
+                  (click)="logIn()">
+              </div>
             </div>
-            <input  [disabled]="!loginForm.valid" type="submit" value="Log In" class="btn btn-block " (click)="logIn()">
+
           </form>
         </div>
       </div>

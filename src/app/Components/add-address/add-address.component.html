@@ -1,0 +1,41 @@
+<div class="col justify-content-center py-3 px-3">
+    <form [formGroup]="addressForm">
+        <div class="input-field first mb-4">
+            Street: <input [class.is-invalid]="addressForm.get('street')?.touched && addressForm.get('street')?.invalid"
+                type="text" class="form-control validate" name="street" formControlName="street">
+        </div>
+        <div class="input-field last mb-4">
+            Number: <input [class.is-invalid]="addressForm.get('number')?.touched && addressForm.get('number')?.invalid"
+                type="text" class="form-control" name="number" formControlName="number">
+        </div>
+        <div class="input-field first mb-4">
+            Zip Code: <input
+                [class.is-invalid]="addressForm.get('zipCode')?.touched && addressForm.get('zipCode')?.invalid"
+                type="text" class="form-control" name="zipCode" formControlName="zipCode" required>
+        </div>
+        <div class="input-field last mb-4">
+            State: <input [class.is-invalid]="addressForm.get('state')?.touched && addressForm.get('state')?.invalid"
+                type="text" class="form-control" name="state" formControlName="state">
+        </div>
+        <div class="input-field last mb-4">
+            City: <input [class.is-invalid]="addressForm.get('city')?.touched && addressForm.get('city')?.invalid"
+                type="text" class="form-control" name="city" formControlName="city">
+        </div>
+        <div class="input-field last mb-4">
+            Country: <input
+                [class.is-invalid]="addressForm.get('country')?.touched && addressForm.get('country')?.invalid"
+                type="text" class="form-control" name="country" formControlName="country">
+        </div>
+        <div class="">
+            <div class="col d-flex align-items-center justify-content-end">
+                <input  type="submit" value="Add Address" class="btn btn-block  btn-success"
+                [disabled]="!addressForm.valid"   (click)="addAddress()">
+            </div>
+            
+        </div>
+    </form>
+
+
+
+
+</div>

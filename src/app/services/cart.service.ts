@@ -35,14 +35,9 @@ export class CartService {
   }
 
   makePayment(card: Card): Observable<any>{
-    
-    const body: Card = {
-      IdCard: card.IdCard,
-      Number: card.Number, 
-      OwnerName: card.OwnerName, 
-      Month: card.Month, 
-      Year: card.Year, 
-      Cv: card.Cv,
+    const body = {
+      card: card,
+      idAddress: localStorage.getItem("id_address")
     }
     return this._http.post(this.url+'/payment/makePayment', body, {withCredentials:true}); 
     

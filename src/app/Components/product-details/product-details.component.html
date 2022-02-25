@@ -1,13 +1,17 @@
-<div class="container">
+<div class="container" *ngIf="product">
     <div class="col-lg-8  p-3 main-section bg-white">
         <div class="alert alert-success alert-dismissible fade show" [hidden]="!blnProductWasAddedToCart" role="alert">
             Product was added to the cart
             <button type="button" class="btn-close"  (click)="closeAlert()"></button>
           </div>
+          <div >
+            <app-modal ></app-modal>
+          </div>
+          
         <form [formGroup]="itemForm">
             <div class="row ">
                
-                <div class="col-lg-4 left-side-product-box pb-3 d-flex justify-content-between align-items-center">
+                <div class="col-lg-4 left-side-product-box pb-3 d-flex justify-content-between align-items-center" >
                     <img src="{{product.src_image}}" class="">
 
                 </div>

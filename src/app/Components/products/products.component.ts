@@ -4,6 +4,8 @@ import { ProductService } from 'src/app/services/Product.service';
 import { Product } from '../../models/product';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import { FavouritesService } from 'src/app/services/favourites.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { Person } from 'src/app/models/Person.model';
 
 @Component({
   selector: 'app-products',
@@ -14,16 +16,18 @@ import { FavouritesService } from 'src/app/services/favourites.service';
 export class ProductsComponent implements OnInit {
   public products: Product[];
   public toSearch: string;
-
-
+ public authenticationService: AuthenticationService;
+public currentUser:Person;
+public bln_isLoggedIn:boolean;
   constructor(
     private _productService: ProductService,
     private _favouritesService: FavouritesService,
     private _cartService: CartService, 
     private _route: ActivatedRoute,
     private _router: Router,
+    private _authenticationService: AuthenticationService
   ) {
-
+   
   }
 
   ngOnInit() {
@@ -65,12 +69,21 @@ export class ProductsComponent implements OnInit {
     }, 
     );
 
-  
-
-
+    this._authenticationService.currentPerson.subscribe(x => {
+      if (x) {
+          console.log("x value in if:"+x);
+          this.currentUser = x;
+          this.bln_isLoggedIn=true;
+      }else{
+          console.log("x value in else:"+x);
+          this.bln_isLoggedIn=false;
+      }
+  }
+  );
   }
 
   addToFavourites(id: number) {
+   
     this._favouritesService.addProductToFavourites(id).subscribe({
       next: (data) => {
         console.log(data);
@@ -85,18 +98,26 @@ export class ProductsComponent implements OnInit {
   }
 
   addProductToCart(id: number) {
-    this._cartService.addProdutToCart(id, 1).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {
-        console.log("success");
-        alert("Product was added to the cart");
-      }
-    });
+    if(!this.bln_isLoggedIn){
+      console.log("user is not loged in ");
+      this._router.navigate(['/login']);
+    }else{
+      this._cartService.addProdutToCart(id, 1).subscribe({
+        next: (data) => {
+          console.log(data);
+        },
+        error: (error) => {
+          console.log(error);
+          this._router.navigate(['/login']);
+        },
+        complete: () => {
+          console.log("success");
+          alert("Product was added to the cart");
+        }
+      });
+    }
+      
+    
   }
 
   filterProducts(word: string, products: Product[]){

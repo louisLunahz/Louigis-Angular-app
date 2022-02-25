@@ -13,7 +13,6 @@ import { ProductDetailsComponent } from './Components/product-details/product-de
 import {AuthGuardService} from './helpers/auth-guard.service'
 import { CartComponent } from './Components/cart/cart.component';
 import { FavouritesComponent } from './Components/favourites/favourites.component';
-import { AddressComponent } from './Components/address/address.component';
 import { SelectAddressComponent } from './Components/select-address/select-address.component';
 import { EnterCardInformationComponent } from './Components/enter-card-information/enter-card-information.component';
 import { RecieptComponent } from './Components/reciept/reciept.component';

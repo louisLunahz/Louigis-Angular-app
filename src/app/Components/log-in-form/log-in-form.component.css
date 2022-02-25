@@ -7,3 +7,8 @@ input:focus {
     border-color: #278e5e;
     box-shadow: 0 0 10px #278e5e;
  }
+ .img-registration{
+     max-width: 100%;
+     max-height: 100%;
+     object-fit: contain;
+ }

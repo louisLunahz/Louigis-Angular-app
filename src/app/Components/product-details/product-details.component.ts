@@ -5,6 +5,8 @@ import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { FavouritesService } from 'src/app/services/favourites.service';
 import { ProductService } from 'src/app/services/Product.service';
+import {AuthenticationService} from 'src/app/services/authentication.service'
+import { Person } from 'src/app/models/Person.model';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -14,14 +16,21 @@ export class ProductDetailsComponent implements OnInit {
   public id: number;
   public product: Product;
   public blnProductWasAddedToCart: boolean=false;
+  public currentUser: Person;
+  public bln_IsLogedIn:boolean;
+
   constructor(
     private _cartService: CartService,
     private _favouritesService: FavouritesService,
     private _productService: ProductService,
     private _route: ActivatedRoute,
     private _router: Router,
+    public authenticationService: AuthenticationService
 
-  ) { }
+  ) {
+
+    
+   }
 
   itemForm = new FormGroup({
     quantity: new FormControl('1', Validators.required),
@@ -54,12 +63,27 @@ export class ProductDetailsComponent implements OnInit {
 
 
     );
+
+    this.authenticationService.currentPerson.subscribe(x => {
+      if (x) {
+          console.log("x value in if:"+x);
+          this.currentUser = x;
+          this.bln_IsLogedIn=true;
+      }else{
+          console.log("x value in else:"+x);
+          this.bln_IsLogedIn=false;
+      }
+  }
+  );
   }
 
 
   AddItemtoCart(id: number) {
-    console.log("id product: " + id);
-    console.log("add item to cart function");
+    if(!this.bln_IsLogedIn){
+     
+   this._router.navigate(['/login']);
+      return;
+    }
     if (this.itemForm.valid) {
       console.log("item form is valid");
       console.log(this.itemForm);
@@ -93,6 +117,11 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   AddItemToFavourites(id: number){
+    if(!this.bln_IsLogedIn){
+      console.log("user is not loged in ");
+      this._router.navigate(['/login']);
+      return;
+    }
     this._favouritesService.addProductToFavourites(id).subscribe({
       next: (data) => {
         console.log(data);
@@ -110,6 +139,8 @@ export class ProductDetailsComponent implements OnInit {
   closeAlert(){
     this.blnProductWasAddedToCart=false;
   }
+
+  
 
  
 
